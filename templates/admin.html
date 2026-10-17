@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Админка{% endblock %}
+
+{% block content %}
+  <h1>Редактирование</h1>
+  <p><a href="/logout">Выйти</a></p>
+
+  <form method="post" class="edit-form">
+    <label>Заголовок
+      <input name="title" value="{{ content.title }}">
+    </label>
+
+    <label>Текст (можно HTML)
+      <textarea name="body" rows="8">{{ content.body }}</textarea>
+    </label>
+
+    <label>Телефон
+      <input name="phone" value="{{ content.phone }}">
+    </label>
+
+    <label>Email
+      <input name="email" value="{{ content.email }}">
+    </label>
+
+    <button type="submit">Сохранить</button>
+  </form>
+
+  <h2>Заявки ({{ leads|length }})</h2>
+  <table class="leads">
+    <thead>
+      <tr><th>#</th><th>Имя</th><th>Телефон</th><th>Сообщение</th><th>Дата</th></tr>
+    </thead>
+    <tbody>
+      {% for l in leads %}
+        <tr>
+          <td>{{ l.id }}</td>
+          <td>{{ l.name }}</td>
+          <td>{{ l.phone }}</td>
+          <td>{{ l.message }}</td>
+          <td>{{ l.ts }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="5">Пока заявок нет</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

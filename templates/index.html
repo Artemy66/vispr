@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ content.title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ content.title }}</h1>
+  <div class="body-text">{{ content.body | safe }}</div>
+
+  <section class="contacts">
+    <h2>Контакты</h2>
+    <p>Телефон: {{ content.phone }}</p>
+    <p>Email: {{ content.email }}</p>
+  </section>
+
+  <section class="lead-form">
+    <h2>Оставить заявку</h2>
+    <form method="post" action="/lead">
+      <input name="name" placeholder="Ваше имя" required>
+      <input name="phone" placeholder="Телефон" required>
+      <textarea name="message" placeholder="Сообщение" rows="4"></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+{% endblock %}
