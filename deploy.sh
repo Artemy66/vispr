@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eu
 
 # Куда деплоим (можно переопределить через env)
-APP_DIR="${APP_DIR:-/opt/mysite}"
+APP_DIR="${APP_DIR:-/opt/vispr}"
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yml}"
 
 cd "$APP_DIR"
